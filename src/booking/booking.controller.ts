@@ -1,11 +1,14 @@
 import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { BookingService } from './booking.service';
 import {
+  BookingCommentDto,
+  BookingCommentInputDto,
   BookingDto,
-  BookingFilterDto,
+  BookingsFilterDto,
   BookingInputDto,
   BookingPatchDto,
   BookingsDto,
+  BookingFilterDto,
 } from './dto/booking.dto';
 import { User } from 'src/user/decorators/user';
 import { PaginationInputDto } from 'src/utils/dto/pagination.dto';
@@ -15,7 +18,7 @@ export class BookingController {
   constructor(private readonly bookingService: BookingService) {}
 
   @Get('/')
-  async bookings(@Query() filter: BookingFilterDto & PaginationInputDto): Promise<BookingsDto> {
+  async bookings(@Query() filter: BookingsFilterDto & PaginationInputDto): Promise<BookingsDto> {
     return this.bookingService.bookings(filter);
   }
 
@@ -35,5 +38,14 @@ export class BookingController {
     @Body() bookingPatchDto: BookingPatchDto,
   ): Promise<BookingDto> {
     return this.bookingService.bookingUpdate(id, bookingPatchDto);
+  }
+
+  @Post('/:id/comment')
+  async bookingCommentCreate(
+    @Param('id') id: string,
+    @User() user,
+    @Body() bookingCommentInputDto: BookingCommentInputDto,
+  ): Promise<BookingCommentDto> {
+    return this.bookingService.bookingCommentCreate(id, user, bookingCommentInputDto);
   }
 }

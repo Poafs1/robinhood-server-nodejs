@@ -14,6 +14,34 @@ import { BookingStatusEnum } from '../enums/bookingStatus.enum';
 import { UserDto } from 'src/user/dto/user.dto';
 import { PaginationDto } from 'src/utils/dto/pagination.dto';
 
+export class BookingCommentInputDto {
+  @IsNotEmpty()
+  @IsString()
+  comment: string;
+}
+
+export class BookingCommentDto {
+  @IsNotEmpty()
+  @IsNumberString()
+  id: string;
+
+  @IsNotEmpty()
+  @IsString()
+  comment: string;
+
+  @IsNotEmpty()
+  @IsObject()
+  user: UserDto;
+
+  @IsNotEmpty()
+  @IsDate()
+  createdAt: Date;
+
+  @IsNotEmpty()
+  @IsDate()
+  updatedAt: Date;
+}
+
 export class BookingInputDto {
   @IsNotEmpty()
   @IsString()
@@ -35,6 +63,12 @@ export class BookingPatchDto {
 }
 
 export class BookingFilterDto {
+  @IsOptional()
+  @IsBooleanString()
+  isShowComments: boolean;
+}
+
+export class BookingsFilterDto {
   @IsOptional()
   @IsEnum(BookingStatusEnum)
   bookingStatus: BookingStatusEnum;
@@ -75,6 +109,10 @@ export class BookingDto {
 
   @IsObject()
   user: UserDto | null;
+
+  @IsNotEmpty()
+  @IsArray()
+  bookingComments: BookingCommentDto[];
 
   @IsNotEmpty()
   @IsDate()
