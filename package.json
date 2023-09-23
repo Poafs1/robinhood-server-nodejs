@@ -20,7 +20,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node --transpile-only ./node_modules/typeorm/cli.js",
-    "pg:init:data": "sh ./mockups/pg/table/init.sh",
+    "pg:init:data": "sh ./mock/pg/init.sh",
     "pg:migration:run": "yarn typeorm --config ./typeorm/ormconfig.json migration:run",
     "pg:migration:generate": "yarn typeorm --config ./typeorm/ormconfig.json -d ./migrations migration:generate -n",
     "postinstall": "husky install",
