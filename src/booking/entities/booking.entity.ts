@@ -1,7 +1,7 @@
 import { BaseAuditableEntity } from '../../sql/entities/baseAuditable.entity';
-import { Column, Entity, Index, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { BookingStatusEnum } from '../enums/bookingStatus.enum';
-import { UserEntity } from 'src/user/entities/user.entity';
+import { UserEntity } from '../../user/entities/user.entity';
 
 @Entity({ name: 'booking' })
 export class BookingEntity extends BaseAuditableEntity {
@@ -14,7 +14,10 @@ export class BookingEntity extends BaseAuditableEntity {
   @Column()
   description: string;
 
-  @OneToOne(() => UserEntity, (user) => user.id, {
+  @Column()
+  user_id: string;
+
+  @ManyToOne(() => UserEntity, {
     onDelete: 'CASCADE',
     orphanedRowAction: 'delete',
     cascade: ['insert', 'update'],

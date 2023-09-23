@@ -27,7 +27,7 @@ async function bootstrap() {
   app.setGlobalPrefix(CONSTANTS.globalPrefix);
 
   // Validation
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
 
   // Swagger
   const { swagger } = CONSTANTS;
