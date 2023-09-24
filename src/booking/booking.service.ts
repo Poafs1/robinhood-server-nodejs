@@ -53,13 +53,13 @@ export class BookingService {
     return {
       id: booking.id.toString(),
       title: booking.title,
-      descirption: booking.description,
+      description: booking.description,
       bookingStatus: booking.booking_status,
       isArchived: booking.is_archived,
       bookingComments:
         booking.booking_comments?.map((bookingComment) => this.mapBookingComment(bookingComment)) ||
         [],
-      createAt: booking.created_at,
+      createdAt: booking.created_at,
       updatedAt: booking.updated_at,
       user: this.mapUser(booking.user),
     };
