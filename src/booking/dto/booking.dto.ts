@@ -97,7 +97,7 @@ export class BookingDto {
 
   @IsNotEmpty()
   @IsString()
-  descirption: string;
+  description: string;
 
   @IsNotEmpty()
   @IsEnum(BookingStatusEnum)
@@ -116,7 +116,7 @@ export class BookingDto {
 
   @IsNotEmpty()
   @IsDate()
-  createAt: Date;
+  createdAt: Date;
 
   @IsNotEmpty()
   @IsDate()
