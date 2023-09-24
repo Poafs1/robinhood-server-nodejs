@@ -6,8 +6,8 @@ TRUNCATE TABLE "booking" CASCADE;
 TRUNCATE TABLE "booking_comment" CASCADE;
 
 -- Reset auto increment
-ALTER SEQUENCE "booking_id_seq" RESTART WITH 1;
-ALTER SEQUENCE "booking_comment_id_seq" RESTART WITH 1;
+ALTER SEQUENCE "booking_id_seq" RESTART WITH 11;
+ALTER SEQUENCE "booking_comment_id_seq" RESTART WITH 51;
 
 -- Create users
 insert into "user" (id, email, username)

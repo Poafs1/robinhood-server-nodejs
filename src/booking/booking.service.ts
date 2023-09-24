@@ -127,7 +127,8 @@ export class BookingService {
     if (isShowComments) {
       findBooking
         .leftJoinAndSelect('booking.booking_comments', 'booking_comments')
-        .leftJoinAndSelect('booking_comments.user', 'booking_comments_user');
+        .leftJoinAndSelect('booking_comments.user', 'booking_comments_user')
+        .orderBy('booking_comments.created_at', 'DESC');
     }
 
     const foundBooking = await findBooking.getOne().catch((error) => {

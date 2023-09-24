@@ -1,0 +1,171 @@
+{
+  "info": {
+    "_postman_id": "8597de2b-3b23-4034-89c1-ccaa31527930",
+    "name": "Robinhood",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "4808505"
+  },
+  "item": [
+    {
+      "name": "Booking Create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Job Interview\",\n    \"description\": \"lorem ipsum\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/booking",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "booking"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Booking Update",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"bookingStatus\": \"Done\",\n    \"isArchived\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/booking/11",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "booking", "11"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Booking",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/booking/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "booking", "1"],
+          "query": [
+            {
+              "key": "isShowComments",
+              "value": "true",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Bookings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/booking?sortBy=id&sortOrder=DESC",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "booking"],
+          "query": [
+            {
+              "key": "isArchived",
+              "value": "false",
+              "disabled": true
+            },
+            {
+              "key": "bookingStatus",
+              "value": "Done",
+              "disabled": true
+            },
+            {
+              "key": "sortBy",
+              "value": "id"
+            },
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            },
+            {
+              "key": "sortOrder",
+              "value": "DESC"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Booking Comment",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"comment\": \"Hooray :)\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/booking/1/comment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "booking", "1", "comment"],
+          "query": [
+            {
+              "key": "bookingStatus",
+              "value": "In Progress",
+              "disabled": true
+            },
+            {
+              "key": "sortBy",
+              "value": "created_at",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/health-check",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "health-check"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
